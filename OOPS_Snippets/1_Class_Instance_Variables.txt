@@ -163,3 +163,29 @@ variable ABC objectname
 None
 
 Process finished with exit code 0
+
+
+------------------------------------------------------------------------------------------------
+Even if the variable name is modified. When referring to instance of the class it still uses the value which was instantiated.
+------------------------------------------------------------------------------------------------
+
+class Parent:
+
+    variable1 = 0
+    def __init__(self, name):
+        self.name = name
+        print("Parent Constructor")
+
+    def display(self):
+        print("Method called")
+        print("variable", Parent.variable1, self.name)
+
+object = Parent("XYZ")
+Parent.name = 'ABC'
+object.display()
+
+ANSWER
+-----------
+Parent Constructor
+Method called
+variable 0 XYZ
