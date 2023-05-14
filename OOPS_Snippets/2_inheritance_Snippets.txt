@@ -1,0 +1,150 @@
+---------------------------------------------------------------
+Inheritance - Object for Parent
+---------------------------------------------------------------
+class Parent:
+
+    def __init__(self):
+        print("Inside Parent Constructor")
+
+
+class Child(Parent):
+
+    def __init__(self):
+        print("Inside Child Constructor")
+
+obj = Parent()
+
+Answer:
+Inside Parent Constructor 
+
+---------------------------------------------------------------
+Inheritance - Object for Child
+---------------------------------------------------------------
+
+class Parent:
+
+    def __init__(self):
+        print("Inside Parent Constructor")
+
+
+class Child(Parent):
+
+    def __init__(self):
+        print("Inside Child Constructor")
+
+obj = Child()
+
+Answer:
+Inside Child Constructor
+
+
+---------------------------------------------------------------
+Inheritance - invoking parent default constructor from child constructor
+---------------------------------------------------------------
+
+class Parent:
+
+    def __init__(self):
+        print("Inside Parent Constructor")
+
+
+class Child(Parent):
+
+    def __init__(self):
+        print("Inside Child Constructor")
+        super().__init__()
+
+obj = Child()
+
+Answer:
+Inside Child Constructor
+Inside Parent Constructor
+
+
+
+---------------------------------------------------------------
+Inheritance - invoking parent parameterized constructor from child default constructor
+---------------------------------------------------------------
+
+class Parent:
+
+    def __init__(self, name):
+        print("Inside Parent Constructor")
+
+
+class Child(Parent):
+
+    def __init__(self):
+        print("Inside Child Constructor")
+        super().__init__("ABC")
+
+obj = Child()
+
+Answer:
+Inside Child Constructor
+Inside Parent Constructor
+
+
+
+---------------------------------------------------------------
+Inheritance - invoking parent parameterized constructor from child parameterized constructor
+---------------------------------------------------------------
+class Parent:
+
+    def __init__(self, name, age):
+        print("Inside Parent Constructor")
+        self.name = name
+        self.age = age
+        print(self.name, self.age)
+
+
+class Child(Parent):
+
+    def __init__(self, name):
+        print("Inside Child Constructor")
+        self.name = name
+        print(self.name)
+        super().__init__("ABC", 25)
+
+obj = Child("XYZ")
+
+Answer:
+Inside Child Constructor
+XYZ
+Inside Parent Constructor
+ABC 25
+
+
+---------------------------------------------------------------
+Inheritance - invoking parent parameterized constructor from child parameterized constructor
+also invoking parent parameterized constructor separately
+---------------------------------------------------------------
+
+
+class Parent:
+
+    def __init__(self, name, age):
+        print("Inside Parent Constructor")
+        self.name = name
+        self.age = age
+        print(self.name, self.age)
+
+
+class Child(Parent):
+
+    def __init__(self, name):
+        print("Inside Child Constructor")
+        self.name = name
+        print(self.name)
+        super().__init__("ABC", 25)
+
+obj = Child("XYZ")
+obj = Parent("XXX", 10)
+
+Answer:
+Inside Child Constructor
+XYZ
+Inside Parent Constructor
+ABC 25
+Inside Parent Constructor
+XXX 10
