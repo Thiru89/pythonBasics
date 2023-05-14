@@ -1,0 +1,165 @@
+------------------------------------------------------------------------------------------------
+Class- Class variables, Instance variables
+------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------
+Accessing defaut Constructor in python
+------------------------------------------------------------------------------------------------
+class Parent:
+    def __init__(self):
+        print("Parent Constructor")
+
+    def display(self):
+        print("Method")
+
+object = Parent()
+
+
+Answer
+------
+Parent Constructor
+
+------------------------------------------------------------------------------------------------
+Accessing a method inside a class
+------------------------------------------------------------------------------------------------
+class Parent:
+    def __init__(self):
+        print("Parent Constructor")
+
+    def display(self):
+        print("Method")
+
+
+object = Parent()
+object.display()
+
+
+Answer
+------
+Parent Constructor
+Method
+------------------------------------------------------------------------------------------------
+Accessing a Class Variables
+------------------------------------------------------------------------------------------------
+
+class Parent:
+
+    variable1 = 0
+    def __init__(self):
+        print("Parent Constructor")
+
+    def display(self):
+        print("Method called")
+        print("variable",Parent.variable1)
+
+
+object = Parent()
+object.display()
+------------------------------------------------------------------------------------------------
+Accessing Class Variable and instance variable  where instance is not assigned on the default constructor
+------------------------------------------------------------------------------------------------
+
+class Parent:
+
+    variable1 = 0
+    def __init__(self, name):
+        print("Parent Constructor")
+
+    def display(self):
+        print("Method called")
+        print("variable", Parent.variable1, self.name)
+
+
+object = Parent("XYZ")
+object.display()
+
+Answer
+------
+AttributeError: 'Parent' object has no attribute 'name'
+------------------------------------------------------------------------------------------------
+Accessing Instance Variable
+------------------------------------------------------------------------------------------------
+class Parent:
+
+    variable1 = 0
+    def __init__(self, name):
+        self.name = name
+        print("Parent Constructor")
+
+    def display(self):
+        print("Method called")
+        print("variable", Parent.variable1, self.name)
+
+
+object = Parent("XYZ")
+object.display()
+
+
+Answer
+------
+Parent Constructor
+Method called
+variable 0 XYZ
+
+------------------------------------------------------------------------------------------------
+Modifying Class variable
+------------------------------------------------------------------------------------------------
+class Parent:
+
+    variable1 = 0
+    def __init__(self, name):
+        self.name = name
+        print("Parent Constructor")
+
+    def display(self):
+        print("Method called")
+        print("variable", Parent.variable1, self.name)
+
+
+object = Parent("XYZ")
+object.display()
+Parent.variable1 = "ABC"
+print(object.display())
+
+
+Answer
+------
+Parent Constructor
+Method called
+variable 0 XYZ
+Method called
+variable ABC XYZ
+None
+
+------------------------------------------------------------------------------------------------
+Modifying Instance variable
+------------------------------------------------------------------------------------------------
+class Parent:
+
+    variable1 = 0
+    def __init__(self, name):
+        self.name = name
+        print("Parent Constructor")
+
+    def display(self):
+        print("Method called")
+        print("variable", Parent.variable1, self.name)
+
+
+object = Parent("XYZ")
+object.display()
+Parent.variable1 = "ABC"
+object.name = "objectname"
+print(object.display())
+
+
+Answer
+----------------
+Parent Constructor
+Method called
+variable 0 XYZ
+Method called
+variable ABC objectname
+None
+
+Process finished with exit code 0
