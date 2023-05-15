@@ -148,3 +148,78 @@ Inside Parent Constructor
 ABC 25
 Inside Parent Constructor
 XXX 10
+
+
+---------------------------------------------------------------
+Inheritance - using parent objects you cannot call child methods. ( parent objects can only access parent class methods and parent class variables)
+---------------------------------------------------------------
+class Parent:
+    parentvariable =10
+    def __init__(self, name, age):
+        print("Inside Parent Constructor")
+        self.name = name
+        self.age = age
+    def parentdisplay(self):
+        print("Inside Parent display method", self.name)
+
+class Child(Parent):
+    childvariable = 100
+    def __init__(self, name):
+        print("Inside Child Constructor")
+        self.name = name
+
+    def childdisplay(self):
+        print("Inside child display method", self.name)
+
+obj = Parent("ABC", 24)
+obj.parentdisplay()
+obj.childdisplay()
+obj.childvariable()
+
+
+
+Answer:
+Traceback (most recent call last):
+  File "C:\Users\Vighnahartha\PycharmProjects\PythonBasics\practice.py", line 21, in <module>
+    obj.childdisplay()
+AttributeError: 'Parent' object has no attribute 'childdisplay'
+Inside Parent Constructor
+Inside Parent display method ABC
+
+
+
+---------------------------------------------------------------
+Inheritance - child objects can access both parent as well child class methods, variables
+---------------------------------------------------------------
+
+class Parent:
+    parentvariable =10
+    def __init__(self, name, age):
+        print("Inside Parent Constructor")
+        self.name = name
+        self.age = age
+    def parentdisplay(self):
+        print("Inside Parent display method", self.name)
+
+class Child(Parent):
+    childvariable = 100
+    def __init__(self, name):
+        print("Inside Child Constructor")
+        self.name = name
+
+    def childdisplay(self):
+        print("Inside child display method", self.name)
+
+obj = Child("ABC")
+print(obj.parentvariable)
+obj.parentdisplay()
+print(obj.childvariable)
+obj.childdisplay()
+
+
+Answer:
+Inside Child Constructor
+10
+Inside Parent display method ABC
+100
+Inside child display method ABC
