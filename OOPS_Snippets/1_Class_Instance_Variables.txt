@@ -189,3 +189,28 @@ ANSWER
 Parent Constructor
 Method called
 variable 0 XYZ
+
+
+
+---------------------------------------------------------------
+Accessing Variables - 
+1. Class variables can be accessed across the anymethod inside the class with the help of self.
+2. Method variables are local to the method so it does not require a self reference.
+---------------------------------------------------------------
+class Parent:
+    Classvariable = "ChildclassVariable"
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.displayfun()
+
+    def displayfun(self):
+        methodvariable="Fool"
+        print(self.name, self.age, self.Classvariable, methodvariable)
+
+obj = Parent("XYZ",10)
+
+ANSWER
+-------
+XYZ 10 ChildclassVariable Fool
