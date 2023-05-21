@@ -196,9 +196,10 @@ variable 0 XYZ
 Accessing Variables - 
 1. Class variables can be accessed across the anymethod inside the class with the help of self.
 2. Method variables are local to the method so it does not require a self reference.
+
 ---------------------------------------------------------------
 class Parent:
-    Classvariable = "ChildclassVariable"
+    Classvariable = "classvariable"
 
     def __init__(self, name, age):
         self.name = name
@@ -206,11 +207,43 @@ class Parent:
         self.displayfun()
 
     def displayfun(self):
-        methodvariable="Fool"
-        print(self.name, self.age, self.Classvariable, methodvariable)
+        methodvariable="methodvariable"
+        print(f"Name Parameter: {self.name} \nAge Parameter: {self.age}\nClassVariable: "
+              f"{self.Classvariable}\nmethod variable: {methodvariable}")
 
 obj = Parent("XYZ",10)
 
 ANSWER
 -------
-XYZ 10 ChildclassVariable Fool
+Name Parameter: XYZ 
+Age Parameter: 10
+ClassVariable: classvariable
+method variable: methodvariable
+
+
+---------------------------------------------------------------
+Accessing Variables - 
+1. Method variable can update the class variable locally inside the method
+---------------------------------------------------------------
+class Parent:
+    Classvariable = "classvariable"
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.displayfun()
+
+    def displayfun(self):
+        methodvariable="methodvariable"
+        self.Classvariable ="override by method"
+        print(f"Name Parameter: {self.name} \nAge Parameter: {self.age}\nClassVariable: "
+              f"{self.Classvariable}\nmethod variable: {methodvariable}")
+
+obj = Parent("XYZ",10)
+
+ANSWER
+-------
+Name Parameter: XYZ 
+Age Parameter: 10
+ClassVariable: override by method
+method variable: methodvariable
