@@ -223,3 +223,47 @@ Inside Child Constructor
 Inside Parent display method ABC
 100
 Inside child display method ABC
+
+---------------------------------------------------------------
+Child objects can access parent method by using super reference
+---------------------------------------------------------------
+class Parent:
+    Classvariable = "classvariable"
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.displayfun()
+
+    def displayfun(self):
+        methodvariable = "methodvariable"
+        self.Classvariable = "override by method"
+        print(f"Name Parameter: {self.name} \nAge Parameter: {self.age}\nClassVariable: "
+              f"{self.Classvariable}\nmethod variable: {methodvariable}")
+
+
+class Child(Parent):
+    childclassvariable = "Childclassvariable"
+
+    def __init__(self, gender):
+        self.gender = gender
+        super().__init__("XYZ", 10)
+
+    def childmethod(self):
+        super().displayfun()
+
+
+obj = Child("Male")
+obj.childmethod()
+
+ANSWER
+-------------
+Name Parameter: XYZ 
+Age Parameter: 10
+ClassVariable: override by method
+method variable: methodvariable
+
+Name Parameter: XYZ 
+Age Parameter: 10
+ClassVariable: override by method
+method variable: methodvariable
