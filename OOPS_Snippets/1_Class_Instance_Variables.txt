@@ -223,7 +223,7 @@ method variable: methodvariable
 
 ---------------------------------------------------------------
 Accessing Variables - 
-1. Method variable can update the class variable locally inside the method
+1. Method variable can update the class variable locally inside the method just use self. reference to change the value inside the function locally
 ---------------------------------------------------------------
 class Parent:
     Classvariable = "classvariable"
